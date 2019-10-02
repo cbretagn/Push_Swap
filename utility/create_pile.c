@@ -6,7 +6,7 @@
 /*   By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 12:09:09 by cbretagn          #+#    #+#             */
-/*   Updated: 2019/10/02 15:58:49 by cbretagn         ###   ########.fr       */
+/*   Updated: 2019/10/02 16:39:44 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,11 @@ void			delete_link(t_link *del)
 	del = NULL;
 }
 
+#include <stdio.h>
 t_pile			*add_link(t_pile *pl, int nb)
 {
 	t_link	*add;
-	t_link	*tmp;
+	//t_link	*tmp;
 
 	if (!(add = create_link(nb)))
 		exit(0);
@@ -55,20 +56,22 @@ t_pile			*add_link(t_pile *pl, int nb)
 		pl->head = &add;
 	else
 	{
-		tmp = *(pl->head);
-		if (!(tmp->prev) && !(tmp->next))
+		//tmp = *(pl->head);
+		if (!((*(pl->head))->prev) && !((*(pl->head))->next))
 		{
-			tmp->next = add;
-			tmp->prev = add;
-			add->next = tmp;
-			add->prev = tmp;
+			(*(pl->head))->next = add;
+			(*(pl->head))->prev = add;
+			add->next = *(pl->head);
+			add->prev = *(pl->head);
+			write(1, "hey", 3);
 		}
 		else
 		{
-			tmp->prev->next = add;
-			add->prev = tmp->prev;
-			add->next = tmp;
-			tmp->prev = add;
+			(*(pl->head))->prev->next = add;
+			add->prev = (*(pl->head))->prev;
+			add->next = *(pl->head);
+			(*(pl->head))->prev = add;
+			printf("adding %d, linked to next %d and prev %d\n", add->value, add->next->value, add->prev->value);
 		}
 	}
 	return (pl);

@@ -6,7 +6,7 @@
 /*   By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 12:04:16 by cbretagn          #+#    #+#             */
-/*   Updated: 2019/10/02 15:58:51 by cbretagn         ###   ########.fr       */
+/*   Updated: 2019/10/02 16:39:46 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int			main(int argc, char **argv)
 	{
 		pla = add_link(pla, ft_atoi(argv[i]));
 	}
-	int fd = open("../log_file", O_WRONLY);
+	int fd = open("log_file", O_WRONLY);
 	print_pile(pla, fd);
 	delete_pile(pla);
 	delete_pile(plb);
