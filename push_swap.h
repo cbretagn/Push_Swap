@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include "libft/libft.h"
+# include "./get_next_line.h"
 
 typedef struct s_link
 {
@@ -42,4 +43,8 @@ void		swap(t_pile *pl);
 void		rotate(t_pile *pl);
 void		rev_rotate(t_pile *pl);
 void		push_sd(t_pile *src, t_pile *dest);
+
+int			check_doublons(t_pile *pl);
+int			error_checker(int size, char **tab);
+int			check_sorted(t_pile *pl);
 # endif

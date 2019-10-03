@@ -6,7 +6,7 @@
 #    By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/03 16:54:48 by cbretagn          #+#    #+#              #
-#    Updated: 2019/10/02 15:58:40 by cbretagn         ###   ########.fr        #
+#    Updated: 2019/10/03 15:30:30 by cbretagn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,9 @@ SRC_NAME	= create_pile.c\
 			  push.c\
 			  swap.c\
 			  rotation.c\
+			  error_checker.c\
+			  checker.c\
+			  get_next_line.c
 
 OBJ_NAME	:= $(SRC_NAME:.c=.o)
 

@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_piles.c                                      :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/02 12:04:16 by cbretagn          #+#    #+#             */
-/*   Updated: 2019/10/02 16:39:46 by cbretagn         ###   ########.fr       */
+/*   Created: 2018/11/28 16:13:55 by cbretagn          #+#    #+#             */
+/*   Updated: 2019/05/02 14:39:52 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
-#include <fcntl.h>
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+# define BUFF_SIZE 4096
 
-void		print_pile(t_pile *pl, int fd)
+int					get_next_line(const int fd, char **line);
+
+typedef struct		s_fd
 {
-	int		i;
-	t_link	*tmp;
-	char	*str;
+	int				fd;
+	char			*str;
+	struct s_fd		*next;
+}					t_fd;
 
-	i = -1;
-	tmp = pl->head;
-	while (++i < pl->size)
-	{
-		str = ft_itoa(tmp->value);
-		write(fd, str, ft_strlen(str));
-		write(fd, "\n", 1);
-		ft_strdel(&str);
-		tmp = tmp->next;
-	}
-	write(fd, "\n\n", 2);
-}
+#endif
