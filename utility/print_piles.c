@@ -20,7 +20,7 @@ void		print_pile(t_pile *pl, int fd)
 	char	*str;
 
 	i = -1;
-	tmp = *(pl->head);
+	tmp = pl->head;
 	while (++i < pl->size)
 	{
 		str = ft_itoa(tmp->value);
@@ -47,7 +47,30 @@ int			main(int argc, char **argv)
 	}
 	int fd = open("log_file", O_WRONLY);
 	print_pile(pla, fd);
+	push_sd(pla, plb);
+	push_sd(pla, plb);
+	push_sd(pla, plb);
+	push_sd(pla, plb);
+	print_pile(pla, fd);
+	print_pile(plb, fd);
+	swap(pla);
+	swap(plb);
+	print_pile(pla, fd);
+	print_pile(plb, fd);
+	rotate(plb);
+	print_pile(plb, fd);
+	rev_rotate(plb);
+	print_pile(plb, fd);
+	rotate(pla);
+	rev_rotate(pla);
+	push_sd(plb, pla);
+	print_pile(pla, fd);
+	rotate(pla);
+	print_pile(pla, fd);
+	rev_rotate(pla);
+	print_pile(pla, fd);
 	delete_pile(pla);
 	delete_pile(plb);
+	close(fd);
 	return (0);
 }

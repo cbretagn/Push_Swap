@@ -43,36 +43,25 @@ void			delete_link(t_link *del)
 	del = NULL;
 }
 
-#include <stdio.h>
 t_pile			*add_link(t_pile *pl, int nb)
 {
 	t_link	*add;
-	//t_link	*tmp;
 
 	if (!(add = create_link(nb)))
 		exit(0);
 	pl->size += 1;
 	if (pl->head == NULL)
-		pl->head = &add;
+	{
+		pl->head = add;
+		add->next = add;
+		add->prev = add;
+	}
 	else
 	{
-		//tmp = *(pl->head);
-		if (!((*(pl->head))->prev) && !((*(pl->head))->next))
-		{
-			(*(pl->head))->next = add;
-			(*(pl->head))->prev = add;
-			add->next = *(pl->head);
-			add->prev = *(pl->head);
-			write(1, "hey", 3);
-		}
-		else
-		{
-			(*(pl->head))->prev->next = add;
-			add->prev = (*(pl->head))->prev;
-			add->next = *(pl->head);
-			(*(pl->head))->prev = add;
-			printf("adding %d, linked to next %d and prev %d\n", add->value, add->next->value, add->prev->value);
-		}
+		pl->head->prev->next = add;
+		add->prev = pl->head->prev;
+		add->next = pl->head;
+		pl->head->prev = add;
 	}
 	return (pl);
 }
@@ -84,7 +73,7 @@ void			delete_pile(t_pile *pl)
 	t_link	*tmp;
 
 	i = -1;
-	tmp = *(pl->head);
+	tmp = pl->head;
 	while (++i < pl->size - 1)
 	{
 		curr = tmp->next;

@@ -6,7 +6,7 @@
 /*   By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 11:57:30 by cbretagn          #+#    #+#             */
-/*   Updated: 2019/10/02 15:57:28 by cbretagn         ###   ########.fr       */
+/*   Updated: 2019/10/02 16:18:10 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_link
 typedef struct s_pile
 {
 	int		size;
-	t_link  **head;
+	t_link  *head;
 }				t_pile;
 
 
@@ -41,5 +41,5 @@ t_pile		*create_pile(void);
 void		swap(t_pile *pl);
 void		rotate(t_pile *pl);
 void		rev_rotate(t_pile *pl);
-t_pile		*push_sd(t_pile *src, t_pile *dest);
+void		push_sd(t_pile *src, t_pile *dest);
 # endif
