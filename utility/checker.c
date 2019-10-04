@@ -6,7 +6,7 @@
 /*   By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 12:04:16 by cbretagn          #+#    #+#             */
-/*   Updated: 2019/10/02 16:39:46 by cbretagn         ###   ########.fr       */
+/*   Updated: 2019/10/04 16:07:50 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int			input_error(t_pile *pla, t_pile *plb)
 	return (0);
 }
 
-static int			exec_instru(char *str, t_pile *pla, t_pile *plb)
+/*static int			exec_instru(char *str, t_pile *pla, t_pile *plb)
 {
 	if (!ft_strcmp(str, "ra"))
 		rotate(pla);
@@ -58,14 +58,14 @@ static int			exec_instru(char *str, t_pile *pla, t_pile *plb)
 	else
 		return (-1);
 	return (0);
-}
+}*/
 	
 int					main(int argc, char **argv)
 {
 	int		i;
 	t_pile	*pla;
 	t_pile	*plb;
-	char	*str;
+	//char	*str;
 
 	pla = create_pile();
 	plb = create_pile();
@@ -76,7 +76,12 @@ int					main(int argc, char **argv)
 		pla = add_link(pla, ft_atoi(argv[i]));
 	if (check_doublons(pla) < 0)
 		return (input_error(pla, plb));
-	while (get_next_line(0, &str))
+	int fd = open("log_file", O_WRONLY);
+	print_pile(pla, fd);
+	medium_qs(pla, 18, 17, &croissant);
+	print_pile(pla, fd);
+	close(fd);
+	/*while (get_next_line(0, &str))
 	{
 		if (exec_instru(str, pla, plb) < 0)
 		{
@@ -88,7 +93,7 @@ int					main(int argc, char **argv)
 	if (plb->head == NULL && check_sorted(pla) == 0)
 		write(1, "OK\n", 3);
 	else
-		write(1, "KO\n", 3);
+		write(1, "KO\n", 3);*/
 	delete_pile(pla);
 	delete_pile(plb);
 	return (0);
