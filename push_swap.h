@@ -6,7 +6,7 @@
 /*   By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 11:57:30 by cbretagn          #+#    #+#             */
-/*   Updated: 2019/10/04 16:04:12 by cbretagn         ###   ########.fr       */
+/*   Updated: 2019/10/08 15:59:14 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ int			error_checker(int size, char **tab);
 int			check_sorted(t_pile *pl);
 
 
-void		first_qs(t_pile *pla, t_pile *plb);
-void		medium_qs(t_pile *pl, int pivot, int end, int sort(int, int));
+void		two_piles_qs(t_pile *pla, t_pile *plb);
+void		quicksort(t_pile *pl, int sort(int, int), int pivot, int end);
 int			croissant(int pivot, int value);
 int			decroissant(int pivot, int value);
 # endif

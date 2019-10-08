@@ -6,13 +6,13 @@
 /*   By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 13:58:16 by cbretagn          #+#    #+#             */
-/*   Updated: 2019/10/04 16:13:23 by cbretagn         ###   ########.fr       */
+/*   Updated: 2019/10/08 15:59:26 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void				first_qs(t_pile *pla, t_pile *plb)
+void				two_piles_qs(t_pile *pla, t_pile *plb)
 {
 	int		pivot;
 	int		size;
@@ -44,34 +44,33 @@ int					decroissant(int pivot, int value)
 	return (0);
 }
 
-void				medium_qs(t_pile *pl, int pivot, int end, int sort(int, int))
+void				quicksort(t_pile *pl, int sort(int, int), int pivot, int end)
 {
-	int		nb_rotation;
+	int rotation;
 
-	nb_rotation = 0;
 	while (pl->head->value != end)
 	{
-		if (sort(pivot, pl->head->value) && !sort(pivot, pl->head->next->value))
-		{
-			write(1, "sa\n", 3);
-			swap(pl);
-		}
-		else
-		{
-			write(1, "ra\n", 3);
+		if (pl->head->value == pivot)
 			rotate(pl);
-			nb_rotation++;
-		}
-	}
-	while (nb_rotation > 0)
-	{
-		rev_rotate(pl);
-		write(1, "rra\n", 4);
-		nb_rotation--;
-		if (sort(pivot, pl->head->value) && !sort(pivot, pl->head->next->value))
+		else if (!sort(pivot, pl->head->value))
 		{
+			rotation = 0;
+			rev_rotate(pl);
+			while (pl->head->value != pivot)
+			{
+				swap(pl);
+				rev_rotate(pl);
+				rotation++;
+			}
 			swap(pl);
-			write(1, "sa\n", 3);
+			while (rotation-- >= 0)
+				rotate(pl);
+		}
+		else if (sort(pivot, pl->head->value))
+		{
+			rotate(pl);
 		}
 	}
+	if (sort(pivot, pl->head->value))
+		rotate(pl);
 }
