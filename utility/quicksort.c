@@ -6,7 +6,7 @@
 /*   By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 13:58:16 by cbretagn          #+#    #+#             */
-/*   Updated: 2019/10/08 15:59:26 by cbretagn         ###   ########.fr       */
+/*   Updated: 2019/10/08 16:17:24 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,26 +51,50 @@ void				quicksort(t_pile *pl, int sort(int, int), int pivot, int end)
 	while (pl->head->value != end)
 	{
 		if (pl->head->value == pivot)
+		{
 			rotate(pl);
+			write(1, "ra\n", 3);
+		}
 		else if (!sort(pivot, pl->head->value))
 		{
 			rotation = 0;
 			rev_rotate(pl);
+			write(1, "rra\n", 4);
 			while (pl->head->value != pivot)
 			{
 				swap(pl);
+				write(1, "sa\n", 3);
 				rev_rotate(pl);
+				write(1, "rra\n", 4);
 				rotation++;
 			}
 			swap(pl);
+			write(1, "sa\n", 3);
 			while (rotation-- >= 0)
+			{
 				rotate(pl);
+				write(1, "ra\n", 3);
+			}
 		}
 		else if (sort(pivot, pl->head->value))
 		{
 			rotate(pl);
+			write(1, "ra\n", 3);
 		}
 	}
 	if (sort(pivot, pl->head->value))
+	{
 		rotate(pl);
+		write(1, "ra\n", 3);
+	}
+}
+
+void				rec_qs(t_pile *pl, int sort(int, int), int pivot, int end)
+{
+	while (pivot != end)
+	{
+		quicksort(pl, sort, pivot, end);
+		end = pivot;
+		pivot = pl->head->value;
+	}
 }
