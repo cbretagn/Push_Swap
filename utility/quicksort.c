@@ -6,7 +6,7 @@
 /*   By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 13:58:16 by cbretagn          #+#    #+#             */
-/*   Updated: 2019/10/08 16:17:24 by cbretagn         ###   ########.fr       */
+/*   Updated: 2019/10/10 15:59:33 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,15 @@ void				two_piles_qs(t_pile *pla, t_pile *plb)
 	while (++i < size)
 	{
 		if (pla->head->value < pivot)
+		{
 			push_sd(pla, plb);
+			write(1, "pb\n", 3);
+		}
 		else
+		{
 			rotate(pla);
+			write(1, "ra\n", 3);
+		}
 	}
 }
 
@@ -44,7 +50,8 @@ int					decroissant(int pivot, int value)
 	return (0);
 }
 
-void				quicksort(t_pile *pl, int sort(int, int), int pivot, int end)
+void				quicksort(t_pile *pl, int sort(int, int), int pivot
+		, int end, t_pile *instru)
 {
 	int rotation;
 
@@ -53,48 +60,38 @@ void				quicksort(t_pile *pl, int sort(int, int), int pivot, int end)
 		if (pl->head->value == pivot)
 		{
 			rotate(pl);
-			write(1, "ra\n", 3);
+			push_instru(instru, RA);
 		}
 		else if (!sort(pivot, pl->head->value))
 		{
 			rotation = 0;
 			rev_rotate(pl);
-			write(1, "rra\n", 4);
+			push_instru(instru, RRA);
 			while (pl->head->value != pivot)
 			{
 				swap(pl);
-				write(1, "sa\n", 3);
+				push_instru(instru, SA);
 				rev_rotate(pl);
-				write(1, "rra\n", 4);
+				push_instru(instru, RRA);
 				rotation++;
 			}
 			swap(pl);
-			write(1, "sa\n", 3);
+			push_instru(instru, SA);
 			while (rotation-- >= 0)
 			{
 				rotate(pl);
-				write(1, "ra\n", 3);
+				push_instru(instru, RA);
 			}
 		}
 		else if (sort(pivot, pl->head->value))
 		{
 			rotate(pl);
-			write(1, "ra\n", 3);
+			push_instru(instru, RA);
 		}
 	}
 	if (sort(pivot, pl->head->value))
 	{
 		rotate(pl);
-		write(1, "ra\n", 3);
-	}
-}
-
-void				rec_qs(t_pile *pl, int sort(int, int), int pivot, int end)
-{
-	while (pivot != end)
-	{
-		quicksort(pl, sort, pivot, end);
-		end = pivot;
-		pivot = pl->head->value;
+		push_instru(instru, RA);
 	}
 }

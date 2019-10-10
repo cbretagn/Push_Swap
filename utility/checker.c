@@ -6,7 +6,7 @@
 /*   By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 12:04:16 by cbretagn          #+#    #+#             */
-/*   Updated: 2019/10/08 16:17:26 by cbretagn         ###   ########.fr       */
+/*   Updated: 2019/10/10 18:10:10 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,12 @@ int					main(int argc, char **argv)
 	int		i;
 	t_pile	*pla;
 	t_pile	*plb;
+	t_pile 	*instru;
 	//char	*str;
 
 	pla = create_pile();
 	plb = create_pile();
+	instru = create_pile();
 	i = 0;
 	if (error_checker(argc, argv) < 0)
 		return (input_error(pla, plb));
@@ -76,11 +78,12 @@ int					main(int argc, char **argv)
 		pla = add_link(pla, ft_atoi(argv[i]));
 	if (check_doublons(pla) < 0)
 		return (input_error(pla, plb));
-	int fd = open("log_file", O_WRONLY);
+	int fd = open("log_file", O_CREAT|O_TRUNC|O_WRONLY);
 	print_pile(pla, fd);
-	int pivot = pla->head->value;
-	quicksort(pla, &croissant, pla->head->value, pla->head->prev->value);
-	rec_qs(pla, &croissant, pla->head->value, pivot);
+	//int pivot = pla->head->value;
+	simple_sort(pla, plb, instru);
+	print_instru(instru);
+	//rec_qs(pla, &croissant, pla->head->value, pivot);
 	print_pile(pla, fd);
 	close(fd);
 	/*while (get_next_line(0, &str))

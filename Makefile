@@ -6,7 +6,7 @@
 #    By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/03 16:54:48 by cbretagn          #+#    #+#              #
-#    Updated: 2019/10/04 16:02:21 by cbretagn         ###   ########.fr        #
+#    Updated: 2019/10/10 15:59:52 by cbretagn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,9 @@ SRC_NAME	= create_pile.c\
 			  error_checker.c\
 			  checker.c\
 			  get_next_line.c\
-			  quicksort.c
+			  instruction_handling.c\
+			  quicksort.c\
+			  simple_sort.c
 
 OBJ_NAME	:= $(SRC_NAME:.c=.o)
 

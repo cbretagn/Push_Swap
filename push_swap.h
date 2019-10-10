@@ -6,7 +6,7 @@
 /*   By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 11:57:30 by cbretagn          #+#    #+#             */
-/*   Updated: 2019/10/08 16:17:29 by cbretagn         ###   ########.fr       */
+/*   Updated: 2019/10/10 18:10:07 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,19 @@
 # include <unistd.h>
 # include "libft/libft.h"
 # include "./get_next_line.h"
+
+
+#define SA 0
+#define SB 2
+#define RA 4
+#define RRA 5
+#define RB 7
+#define RRB 8
+#define PA 10
+#define PB 12
+#define RR 14
+#define RRR 16
+#define SS 18
 
 typedef struct s_link
 {
@@ -50,9 +63,14 @@ int			check_sorted(t_pile *pl);
 
 
 void		two_piles_qs(t_pile *pla, t_pile *plb);
-void		quicksort(t_pile *pl, int sort(int, int), int pivot, int end);
+void		quicksort(t_pile *pl, int sort(int, int), int pivot, int end, t_pile *instru);
 int			croissant(int pivot, int value);
 int			decroissant(int pivot, int value);
 
 void		rec_qs(t_pile *pl, int sort(int, int), int pivot, int end);
+
+void		push_instru(t_pile *instru, int value);
+void		print_instru(t_pile *instru);
+
+void		simple_sort(t_pile *pla, t_pile *plb, t_pile *instru);
 # endif
