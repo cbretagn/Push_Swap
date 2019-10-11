@@ -6,77 +6,70 @@
 /*   By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 17:13:16 by cbretagn          #+#    #+#             */
-/*   Updated: 2019/10/09 18:29:59 by cbretagn         ###   ########.fr       */
+/*   Updated: 2019/10/11 18:17:36 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//cpy lst into array
-//
-//quicksort hoare partition scheme
-//
-//push on b
-//pull back on a
-
 #include "../push_swap.h"
 
-int			*create_array(t_pile *pl)
+int				*create_array(t_pile *pl, int size)
 {
 	int		*tab;
 	t_link	*tmp;
 	int		i;
 
 	i = 0;
-	if (!(tab = (int *)malloc(sizeof(int) * pl->size)))
+	if (!(tab = (int *)malloc(sizeof(int) * size)))
 		return (NULL);
-	tmp = pl->head->next;
-	tab[0] = pl->head->value;
-	while (tmp->value != tab[0])
+	tmp = pl->head;
+	while (--size >= 0)
 	{
-		tab[++i] = tmp->value;
+		tab[i++] = tmp->value;
 		tmp = tmp->next;
 	}
 	return (tab);
 }
 
-int			partition(int *tab, int head, int tail)
+static void		tab_swap(int *tab, int i, int j)
 {
-	int		i;
-	int		j;
-	int		pivot;
 	int		tmp;
 
-	pivot = (tail - head) / 2;
-	i = head;
-	j = tail;
-	while (42)
-	{
-		while (i <= tail && tab[i] < pivot)
-			i++;
-		while (j >= head && tab[j] > pivot)
-			j--;
-		tmp = tab[i];
-		tab[i] = tab[j];
-		tab[j] = tmp;
-		if (i >= j)
-			return (i);
-	}
-	return (i);
+	tmp = tab[i];
+	tab[i] = tab[j];
+	tab[j] = tmp;
 }
 
-int			main(int argc, char **argv)
+static int		partition(int *tab, int head, int tail)
 {
-	int	*tab;
-	tab = malloc(sizeof(int) * argc - 1);
-	int i = 0;
-	while (++i < argc)
-		tab[i - 1] = ft_atoi(argv[i]);
-	int ret = partition(tab, 0, argc - 2);
-	i = -1;
-	while (++i < argc - 1)
+	int		pivot;
+	int		i;
+	int		j;
+	int		tmp;
+
+	pivot = tab[tail];
+	i = head - 1;
+	j = head;
+	while (j < tail)
 	{
-		ft_putnbr(tab[i]);
-		ft_putchar(' ');
+		if (tab[j] <= pivot)
+		{
+			i++;
+			tab_swap(tab, i, j);
+		}
+		j++;
 	}
-	ft_putnbr(ret);
-	return (0);
+	tab_swap(tab, i + 1, tail);
+	return (i + 1);
+}
+
+void				tab_quicksort(int *tab, int head, int tail)
+{
+	int		pivot;
+
+	if (head < tail)
+	{
+		pivot = partition(tab, head, tail);
+		tab_quicksort(tab, head, pivot - 1);
+		tab_quicksort(tab, pivot + 1, tail);
+	}
 }
