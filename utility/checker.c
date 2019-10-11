@@ -6,7 +6,7 @@
 /*   By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 12:04:16 by cbretagn          #+#    #+#             */
-/*   Updated: 2019/10/10 18:10:10 by cbretagn         ###   ########.fr       */
+/*   Updated: 2019/10/11 18:47:55 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,8 @@ int					main(int argc, char **argv)
 		return (input_error(pla, plb));
 	int fd = open("log_file", O_CREAT|O_TRUNC|O_WRONLY);
 	print_pile(pla, fd);
-	//int pivot = pla->head->value;
-	simple_sort(pla, plb, instru);
+	full_sort(pla, plb, instru);
 	print_instru(instru);
-	//rec_qs(pla, &croissant, pla->head->value, pivot);
 	print_pile(pla, fd);
 	close(fd);
 	/*while (get_next_line(0, &str))

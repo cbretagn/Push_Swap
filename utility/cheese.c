@@ -6,7 +6,7 @@
 /*   By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 17:13:16 by cbretagn          #+#    #+#             */
-/*   Updated: 2019/10/11 18:17:36 by cbretagn         ###   ########.fr       */
+/*   Updated: 2019/10/11 18:44:17 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ static int		partition(int *tab, int head, int tail)
 	int		pivot;
 	int		i;
 	int		j;
-	int		tmp;
 
 	pivot = tab[tail];
 	i = head - 1;

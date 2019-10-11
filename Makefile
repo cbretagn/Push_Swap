@@ -6,7 +6,7 @@
 #    By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/03 16:54:48 by cbretagn          #+#    #+#              #
-#    Updated: 2019/10/10 15:59:52 by cbretagn         ###   ########.fr        #
+#    Updated: 2019/10/11 18:43:49 by cbretagn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,9 @@ SRC_NAME	= create_pile.c\
 			  get_next_line.c\
 			  instruction_handling.c\
 			  quicksort.c\
+			  sort_algo.c\
+			  sort_algo_utility.c\
+			  cheese.c\
 			  simple_sort.c
 
 OBJ_NAME	:= $(SRC_NAME:.c=.o)

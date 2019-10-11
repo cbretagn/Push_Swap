@@ -6,7 +6,7 @@
 /*   By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 16:33:39 by cbretagn          #+#    #+#             */
-/*   Updated: 2019/10/11 18:28:59 by cbretagn         ###   ########.fr       */
+/*   Updated: 2019/10/11 18:47:46 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,10 @@ static void			sort_pla(int size, t_stru *pl)
 	count_ra = 0;
 	count_pb = 0;
 	if (size <= 2)
-		handle_two(pl->pla, size);
+		handle_two(pl, size, 1);
 	else
 	{
-		find_pivot(pl->pla, size);
+		pivot = find_pivot(pl->pla, size);
 		tmp = size;
 		while (--tmp >= 0)
 		{
@@ -105,12 +105,13 @@ static void			sort_plb(int size, t_stru *pl)
 	count_pa = 0;
 	if (size <= 2)
 	{
-		handle_two(plb, size, 0);
+		handle_two(pl, size, 0);
 		delete_link(pl->lst_pb->head);
+		pl->lst_pb->size -= 1;
 	}
 	else
 	{
-		find_pivot(pl->plb, size);
+		pivot = find_pivot(pl->plb, size);
 		tmp = size;
 		while (--tmp >= 0)
 		{
@@ -135,9 +136,20 @@ static void			sort_plb(int size, t_stru *pl)
 	}
 }
 
-void				full_sort(t_stru *pl)
+void				full_sort(t_pile *pla, t_pile *plb, t_pile *instru)
 {
+	t_pile *lst_pb;
+	t_stru	*pl;
+
+	if (!(pl = (t_stru *)malloc(sizeof(t_stru))))
+		return ;
+	lst_pb = create_pile();
+	pl->pla = pla;
+	pl->plb = plb;
+	pl->instru = instru;
+	pl->lst_pb = lst_pb;
+	lst_pb = create_pile();
 	sort_pla(pl->pla->size, pl);
-	while (pl->plb->size != 0 && pl->lst_plb->size != 0)
-		sort_plb(pl->lst_plb->head->value, pl);
+	while (pl->plb->size != 0 && pl->lst_pb->size != 0)
+		sort_plb(pl->lst_pb->head->value, pl);
 }

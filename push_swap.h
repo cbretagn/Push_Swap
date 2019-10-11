@@ -6,7 +6,7 @@
 /*   By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 11:57:30 by cbretagn          #+#    #+#             */
-/*   Updated: 2019/10/10 18:10:07 by cbretagn         ###   ########.fr       */
+/*   Updated: 2019/10/11 18:47:58 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,13 @@ typedef struct s_pile
 	t_link  *head;
 }				t_pile;
 
+typedef struct s_stru
+{
+	t_pile	*pla;
+	t_pile	*plb;
+	t_pile	*lst_pb;
+	t_pile	*instru;
+}				t_stru;
 
 void		print_pile(t_pile *pl, int fd);
 void		delete_link(t_link *del);
@@ -72,5 +79,16 @@ void		rec_qs(t_pile *pl, int sort(int, int), int pivot, int end);
 void		push_instru(t_pile *instru, int value);
 void		print_instru(t_pile *instru);
 
+int			*create_array(t_pile *pl, int size);
+void		tab_quicksort(int *tab, int head, int tail);
+
 void		simple_sort(t_pile *pla, t_pile *plb, t_pile *instru);
+
+void		full_sort(t_pile *pla, t_pile *plb, t_pile *instru);
+
+void		sb_sa(t_pile *pl, t_pile *instru, int i);
+void		rb_ra(t_pile *pl, t_pile *instru, int i);
+void		rrb_rra(t_pile *pl, t_pile *instru, int i);
+void		pb_pa(t_pile *pls, t_pile *pld, t_pile *instru, int i);
+
 # endif
