@@ -6,7 +6,7 @@
 /*   By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 12:04:16 by cbretagn          #+#    #+#             */
-/*   Updated: 2019/10/11 18:47:55 by cbretagn         ###   ########.fr       */
+/*   Updated: 2019/10/14 17:35:23 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ int					main(int argc, char **argv)
 	full_sort(pla, plb, instru);
 	print_instru(instru);
 	print_pile(pla, fd);
+	print_pile(plb, fd);
 	close(fd);
 	/*while (get_next_line(0, &str))
 	{

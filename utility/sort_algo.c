@@ -6,7 +6,7 @@
 /*   By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 16:33:39 by cbretagn          #+#    #+#             */
-/*   Updated: 2019/10/11 18:47:46 by cbretagn         ###   ########.fr       */
+/*   Updated: 2019/10/14 17:35:21 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,11 +84,20 @@ static void			sort_pla(int size, t_stru *pl)
 		}
 		pl->lst_pb = add_link(pl->lst_pb, count_pb);
 		rev_rotate(pl->lst_pb);
-		if (size != pl->pla->size)
+		if (size != pl->pla->size && pl->pla->size > 1)
 		{
-			tmp = count_ra;
-			while (--tmp >= 0)
-				rrb_rra(pl->pla, pl->instru, 1);
+			if (count_ra < pl->pla->size - count_ra)
+			{
+				tmp = count_ra;
+				while (--tmp >= 0)
+					rrb_rra(pl->pla, pl->instru, 1);
+			}
+			else
+			{
+				tmp = pl->pla->size - count_ra;
+				while (--tmp >= 0)
+					rb_ra(pl->pla, pl->instru, 1);
+			}
 		}
 		sort_pla(count_ra, pl);
 	}
@@ -106,7 +115,8 @@ static void			sort_plb(int size, t_stru *pl)
 	if (size <= 2)
 	{
 		handle_two(pl, size, 0);
-		delete_link(pl->lst_pb->head);
+		rotate(pl->lst_pb);
+		delete_link(pl->lst_pb->head->prev);
 		pl->lst_pb->size -= 1;
 	}
 	else
@@ -127,10 +137,19 @@ static void			sort_plb(int size, t_stru *pl)
 			}
 		}
 		pl->lst_pb->head->value = count_rb;
-		if (count_rb != pl->plb->size)
+		if (count_rb != pl->plb->size && pl->plb->size > 1)
 		{
-			while (--count_rb >= 0)
-				rrb_rra(pl->plb, pl->instru, 0);
+			if (count_rb < pl->plb->size - count_rb)
+			{
+				while (--count_rb >= 0)
+					rrb_rra(pl->plb, pl->instru, 0);
+			}
+			else
+			{
+				count_rb = pl->plb->size - count_rb;
+				while (--count_rb >= 0)
+					rb_ra(pl->plb, pl->instru, 0);
+			}
 		}
 		sort_pla(count_pa, pl);
 	}
@@ -147,9 +166,9 @@ void				full_sort(t_pile *pla, t_pile *plb, t_pile *instru)
 	pl->pla = pla;
 	pl->plb = plb;
 	pl->instru = instru;
-	pl->lst_pb = lst_pb;
 	lst_pb = create_pile();
+	pl->lst_pb = lst_pb;
 	sort_pla(pl->pla->size, pl);
-	while (pl->plb->size != 0 && pl->lst_pb->size != 0)
+	while (pl->lst_pb->size > 0)
 		sort_plb(pl->lst_pb->head->value, pl);
 }
