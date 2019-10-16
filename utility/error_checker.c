@@ -6,7 +6,7 @@
 /*   By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 12:04:16 by cbretagn          #+#    #+#             */
-/*   Updated: 2019/10/02 16:39:46 by cbretagn         ###   ########.fr       */
+/*   Updated: 2019/10/16 14:20:53 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int				check_sorted(t_pile *pl)
 	tmp = pl->head;
 	while (++i < pl->size)
 	{
-		if (tmp->value >= tmp->next->value)
+		if (tmp->value > tmp->next->value)
 			return (-1);
 		tmp = tmp->next;
 	}

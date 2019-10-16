@@ -6,7 +6,7 @@
 /*   By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 11:57:30 by cbretagn          #+#    #+#             */
-/*   Updated: 2019/10/11 18:47:58 by cbretagn         ###   ########.fr       */
+/*   Updated: 2019/10/16 14:31:41 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@
 #define RB 7
 #define RRB 8
 #define PA 10
-#define PB 12
-#define RR 14
-#define RRR 16
-#define SS 18
+#define PB 11
+#define RR 13
+#define RRR 15
+#define SS 17
 
 typedef struct s_link
 {
@@ -67,7 +67,6 @@ void		push_sd(t_pile *src, t_pile *dest);
 int			check_doublons(t_pile *pl);
 int			error_checker(int size, char **tab);
 int			check_sorted(t_pile *pl);
-
 
 void		two_piles_qs(t_pile *pla, t_pile *plb);
 void		quicksort(t_pile *pl, int sort(int, int), int pivot, int end, t_pile *instru);

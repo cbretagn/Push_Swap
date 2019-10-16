@@ -6,13 +6,11 @@
 /*   By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 12:04:16 by cbretagn          #+#    #+#             */
-/*   Updated: 2019/10/14 17:35:23 by cbretagn         ###   ########.fr       */
+/*   Updated: 2019/10/16 14:21:58 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-#include <fcntl.h>
 
 static int			input_error(t_pile *pla, t_pile *plb)
 {
@@ -22,7 +20,7 @@ static int			input_error(t_pile *pla, t_pile *plb)
 	return (0);
 }
 
-/*static int			exec_instru(char *str, t_pile *pla, t_pile *plb)
+static int			exec_instru(char *str, t_pile *pla, t_pile *plb)
 {
 	if (!ft_strcmp(str, "ra"))
 		rotate(pla);
@@ -58,19 +56,17 @@ static int			input_error(t_pile *pla, t_pile *plb)
 	else
 		return (-1);
 	return (0);
-}*/
+}
 	
 int					main(int argc, char **argv)
 {
 	int		i;
 	t_pile	*pla;
 	t_pile	*plb;
-	t_pile 	*instru;
-	//char	*str;
+	char	*str;
 
 	pla = create_pile();
 	plb = create_pile();
-	instru = create_pile();
 	i = 0;
 	if (error_checker(argc, argv) < 0)
 		return (input_error(pla, plb));
@@ -78,14 +74,7 @@ int					main(int argc, char **argv)
 		pla = add_link(pla, ft_atoi(argv[i]));
 	if (check_doublons(pla) < 0)
 		return (input_error(pla, plb));
-	int fd = open("log_file", O_CREAT|O_TRUNC|O_WRONLY);
-	print_pile(pla, fd);
-	full_sort(pla, plb, instru);
-	print_instru(instru);
-	print_pile(pla, fd);
-	print_pile(plb, fd);
-	close(fd);
-	/*while (get_next_line(0, &str))
+	while (get_next_line(0, &str))
 	{
 		if (exec_instru(str, pla, plb) < 0)
 		{
@@ -97,7 +86,7 @@ int					main(int argc, char **argv)
 	if (plb->head == NULL && check_sorted(pla) == 0)
 		write(1, "OK\n", 3);
 	else
-		write(1, "KO\n", 3);*/
+		write(1, "KO\n", 3);
 	delete_pile(pla);
 	delete_pile(plb);
 	return (0);
