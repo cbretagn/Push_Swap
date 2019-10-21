@@ -6,7 +6,7 @@
 /*   By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 11:57:30 by cbretagn          #+#    #+#             */
-/*   Updated: 2019/10/16 14:31:41 by cbretagn         ###   ########.fr       */
+/*   Updated: 2019/10/21 13:50:06 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,9 @@ void		tab_quicksort(int *tab, int head, int tail);
 
 void		simple_sort(t_pile *pla, t_pile *plb, t_pile *instru);
 
+int			find_pivot(t_pile *pl, int size);
+int			divide_pile_pla(int size, t_stru *pl);
+int			divide_pile_plb(int size, t_stru *pl);
 void		full_sort(t_pile *pla, t_pile *plb, t_pile *instru);
 
 void		sb_sa(t_pile *pl, t_pile *instru, int i);
@@ -90,4 +93,5 @@ void		rb_ra(t_pile *pl, t_pile *instru, int i);
 void		rrb_rra(t_pile *pl, t_pile *instru, int i);
 void		pb_pa(t_pile *pls, t_pile *pld, t_pile *instru, int i);
 
+t_pile		*parse_string(char *str, t_pile *pl);
 # endif

@@ -6,7 +6,7 @@
 #    By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/03 16:54:48 by cbretagn          #+#    #+#              #
-#    Updated: 2019/10/16 14:18:04 by cbretagn         ###   ########.fr        #
+#    Updated: 2019/10/21 14:57:18 by cbretagn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,10 +30,12 @@ UTIL_NAME	= create_pile.c\
 			  push.c\
 			  swap.c\
 			  rotation.c\
-			  error_checker.c
+			  error_checker.c\
+			  arg_str.c
 			  
 SORT_NAME	= sort_algo.c\
 			  sort_algo_utility.c\
+			  sort_algo2.c\
 			  cheese.c\
 			  instruction_handling.c\
 			  main.c
@@ -64,7 +66,7 @@ LIB_PATH	= libft/libft.a
 
 CC			= gcc
 
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror -g
 
 .PHONY		: all clean fclean re
 

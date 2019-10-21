@@ -6,7 +6,7 @@
 /*   By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 15:05:53 by cbretagn          #+#    #+#             */
-/*   Updated: 2019/10/16 14:31:47 by cbretagn         ###   ########.fr       */
+/*   Updated: 2019/10/21 14:13:09 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ void		push_instru(t_pile *instru, int value)
 		instru = add_link(instru, value);
 }
 
-void			print_instru(t_pile *instru)
+void		print_instru(t_pile *instru)
 {
 	t_link	*tmp;
-	char	*tab[19];
-	
+	char	*tab[18];
+
 	if (instru->size < 1)
 		return ;
 	tmp = instru->head;
@@ -60,10 +60,10 @@ void			print_instru(t_pile *instru)
 	tab[7] = "rb\n";
 	tab[8] = "rrb\n";
 	tab[10] = "pa\n";
-	tab[12] = "pb\n";
-	tab[14] = "rr\n";
-	tab[16] = "rrr\n";
-	tab[18] = "ss\n";
+	tab[11] = "pb\n";
+	tab[13] = "rr\n";
+	tab[15] = "rrr\n";
+	tab[17] = "ss\n";
 	ft_putstr(tab[tmp->value]);
 	tmp = tmp->next;
 	while (tmp != instru->head)

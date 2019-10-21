@@ -6,7 +6,7 @@
 /*   By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 17:13:16 by cbretagn          #+#    #+#             */
-/*   Updated: 2019/10/11 18:44:17 by cbretagn         ###   ########.fr       */
+/*   Updated: 2019/10/21 14:12:09 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static int		partition(int *tab, int head, int tail)
 	return (i + 1);
 }
 
-void				tab_quicksort(int *tab, int head, int tail)
+void			tab_quicksort(int *tab, int head, int tail)
 {
 	int		pivot;
 

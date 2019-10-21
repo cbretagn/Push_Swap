@@ -6,13 +6,13 @@
 /*   By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 12:04:16 by cbretagn          #+#    #+#             */
-/*   Updated: 2019/10/16 14:20:53 by cbretagn         ###   ########.fr       */
+/*   Updated: 2019/10/21 14:10:34 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int			error_checker(int size, char **tab)
+int					error_checker(int size, char **tab)
 {
 	int		i;
 	int		j;
@@ -20,11 +20,13 @@ int			error_checker(int size, char **tab)
 	i = 0;
 	if (size < 2)
 		return (-1);
+	if (size == 2)
+		return (1);
 	while (++i < size)
 	{
 		j = -1;
-		if (ft_strlen(tab[i]) > 11 
-				|| (ft_strlen(tab[i]) > 10 
+		if (ft_strlen(tab[i]) > 11
+				|| (ft_strlen(tab[i]) > 10
 					&& tab[i][0] != '-' && tab[i][0] != '+'))
 			return (-1);
 		if (tab[i][0] == '-' || tab[i][0] == '+')
@@ -38,7 +40,7 @@ int			error_checker(int size, char **tab)
 	return (0);
 }
 
-static int		check_one(int to_check, t_pile *pl)
+static int			check_one(int to_check, t_pile *pl)
 {
 	int		i;
 	int		count;
@@ -58,7 +60,7 @@ static int		check_one(int to_check, t_pile *pl)
 	return (0);
 }
 
-int				check_doublons(t_pile *pl)
+int					check_doublons(t_pile *pl)
 {
 	int		i;
 	t_link	*tmp;
@@ -74,7 +76,7 @@ int				check_doublons(t_pile *pl)
 	return (0);
 }
 
-int				check_sorted(t_pile *pl)
+int					check_sorted(t_pile *pl)
 {
 	int		i;
 	t_link	*tmp;

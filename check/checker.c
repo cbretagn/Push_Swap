@@ -6,7 +6,7 @@
 /*   By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 12:04:16 by cbretagn          #+#    #+#             */
-/*   Updated: 2019/10/16 14:21:58 by cbretagn         ###   ########.fr       */
+/*   Updated: 2019/10/21 14:03:21 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,33 @@
 
 static int			input_error(t_pile *pla, t_pile *plb)
 {
-	delete_pile(pla);
-	delete_pile(plb);
+	if (pla)
+		delete_pile(pla);
+	if (plb)
+		delete_pile(plb);
 	write(1, "Error\n", 6);
+	return (0);
+}
+
+static int			exec_instru2(char *str, t_pile *pla, t_pile *plb)
+{
+	if (!ft_strcmp(str, "rrr"))
+	{
+		rev_rotate(pla);
+		rev_rotate(plb);
+	}
+	else if (!ft_strcmp(str, "rr"))
+	{
+		rotate(pla);
+		rotate(plb);
+	}
+	else if (!ft_strcmp(str, "ss"))
+	{
+		swap(pla);
+		swap(plb);
+	}
+	else
+		return (-1);
 	return (0);
 }
 
@@ -38,42 +62,15 @@ static int			exec_instru(char *str, t_pile *pla, t_pile *plb)
 		swap(pla);
 	else if (!ft_strcmp(str, "sb"))
 		swap(plb);
-	else if (!ft_strcmp(str, "rrr"))
-	{
-		rev_rotate(pla);
-		rev_rotate(plb);
-	}
-	else if (!ft_strcmp(str, "rr"))
-	{
-		rotate(pla);
-		rotate(plb);
-	}
-	else if (!ft_strcmp(str, "ss"))
-	{
-		swap(pla);
-		swap(plb);
-	}
 	else
-		return (-1);
+		return (exec_instru2(str, pla, plb));
 	return (0);
 }
-	
-int					main(int argc, char **argv)
+
+static int			handle_piles(t_pile *pla, t_pile *plb)
 {
-	int		i;
-	t_pile	*pla;
-	t_pile	*plb;
 	char	*str;
 
-	pla = create_pile();
-	plb = create_pile();
-	i = 0;
-	if (error_checker(argc, argv) < 0)
-		return (input_error(pla, plb));
-	while (++i < argc)
-		pla = add_link(pla, ft_atoi(argv[i]));
-	if (check_doublons(pla) < 0)
-		return (input_error(pla, plb));
 	while (get_next_line(0, &str))
 	{
 		if (exec_instru(str, pla, plb) < 0)
@@ -89,5 +86,34 @@ int					main(int argc, char **argv)
 		write(1, "KO\n", 3);
 	delete_pile(pla);
 	delete_pile(plb);
+	return (0);
+}
+
+int					main(int argc, char **argv)
+{
+	int		i;
+	t_pile	*pla;
+	t_pile	*plb;
+
+	pla = create_pile();
+	plb = create_pile();
+	i = 0;
+	if (error_checker(argc, argv) < 0)
+		return (input_error(pla, plb));
+	else if (error_checker(argc, argv) == 1)
+	{
+		pla = parse_string(argv[1], pla);
+		if (pla == NULL)
+			return (input_error(pla, plb));
+	}
+	else
+	{
+		while (++i < argc)
+			pla = add_link(pla, ft_atoi(argv[i]));
+	}
+	if (check_doublons(pla) < 0)
+		return (input_error(pla, plb));
+	if (handle_piles(pla, plb) < 0)
+		return (-1);
 	return (0);
 }
