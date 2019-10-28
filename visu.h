@@ -6,7 +6,7 @@
 /*   By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 12:24:06 by cbretagn          #+#    #+#             */
-/*   Updated: 2019/10/28 17:10:11 by cbretagn         ###   ########.fr       */
+/*   Updated: 2019/10/28 18:00:24 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,15 @@ int				init_piles(t_pile *pla, int argc, char **argv);
 SDL_Window		*init_Sdl();
 void			quit_Sdl(SDL_Window *win, SDL_Renderer *rend);
 
-int				main_loop(SDL_Window *win, SDL_Renderer *rend, t_pile *pla,
-					t_pile *plb);
+int				main_loop(SDL_Renderer *rend, t_pile *pla,
+					t_pile *plb, SDL_Event *e);
 
 void			get_gradient_color(SDL_Color *color, t_gradient *gradient, int nb);
 void			set_color(SDL_Color *color, int r, int g, int b);
 t_posinfo		*init_info(char type, int size);
 t_gradient		*init_gradient(t_pile *pla);
-void			put_rect(SDL_Renderer *rend, t_posinfo *info_pl, SDL_Color *color);
+void			put_rect(SDL_Renderer *rend, t_posinfo *info_pl,
+					SDL_Color *color, int y);
 
 int				find_min(t_pile *pl);
 int				find_max(t_pile *pl);

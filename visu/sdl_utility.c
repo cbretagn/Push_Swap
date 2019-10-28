@@ -6,7 +6,7 @@
 /*   By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 14:02:13 by cbretagn          #+#    #+#             */
-/*   Updated: 2019/10/28 17:09:58 by cbretagn         ###   ########.fr       */
+/*   Updated: 2019/10/28 18:00:31 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void		get_gradient_color(SDL_Color *color, t_gradient *gradient, int nb)
 {
-	color->r = START_R + (v_abs(nb - gradient->min) * gradient->r);
-	color->g = START_G + (v_abs(nb - gradient->min) * gradient->g);
-	color->b = START_B + (v_abs(nb - gradient->min) * gradient->b);
+	color->r = START_R + ((nb - gradient->min) * gradient->r);
+	color->g = START_G + ((nb - gradient->min) * gradient->g);
+	color->b = START_B + ((nb - gradient->min) * gradient->b);
 	color->a = 255;
 }
 
@@ -64,12 +64,13 @@ t_gradient			*init_gradient(t_pile *pla)
 	return (gradient);
 }
 
-void				put_rect(SDL_Renderer *rend, t_posinfo *info_pl, SDL_Color *color)
+void				put_rect(SDL_Renderer *rend, t_posinfo *info_pl,
+						SDL_Color *color, int y)
 {
 	SDL_Rect rect;
 
 	rect.x = info_pl->x;
-	rect.y = info_pl->y;
+	rect.y = y;
 	rect.w = info_pl->length;
 	rect.h = info_pl->width;
 

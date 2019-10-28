@@ -6,7 +6,7 @@
 /*   By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 16:25:48 by cbretagn          #+#    #+#             */
-/*   Updated: 2019/10/28 17:10:08 by cbretagn         ###   ########.fr       */
+/*   Updated: 2019/10/28 18:00:29 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int			main(int argc, char **argv)
 	SDL_Renderer	*rend;
 	t_pile			*pla;
 	t_pile			*plb;
+	SDL_Event		e;
 
 	win = init_Sdl();
 	rend = SDL_GetRenderer(win);
@@ -31,7 +32,7 @@ int			main(int argc, char **argv)
 		delete_pile(plb);
 		exit(-1);
 	}
-	main_loop(win, rend, pla, plb);
+	main_loop(rend, pla, plb, &e);
 	quit_Sdl(win, rend);
 	return (0);
 }
