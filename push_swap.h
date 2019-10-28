@@ -6,7 +6,7 @@
 /*   By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 11:57:30 by cbretagn          #+#    #+#             */
-/*   Updated: 2019/10/21 13:50:06 by cbretagn         ###   ########.fr       */
+/*   Updated: 2019/10/22 16:12:13 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@
 #define RB 7
 #define RRB 8
 #define PA 10
-#define PB 11
-#define RR 13
-#define RRR 15
-#define SS 17
+#define PB 12
+#define RR 14
+#define RRR 16
+#define SS 18
 
 typedef struct s_link
 {

@@ -1,0 +1,106 @@
+==37625== Memcheck, a memory error detector
+==37625== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==37625== Using Valgrind-3.16.0.GIT and LibVEX; rerun with -h for copyright info
+==37625== Command: ./a.out
+==37625== Parent PID: 37285
+==37625== 
+==37625== 
+==37625== HEAP SUMMARY:
+==37625==     in use at exit: 19,230 bytes in 168 blocks
+==37625==   total heap usage: 189 allocs, 21 frees, 27,678 bytes allocated
+==37625== 
+==37625== 24 bytes in 1 blocks are possibly lost in loss record 8 of 43
+==37625==    at 0x1000D52F1: malloc_zone_calloc (in /Users/cbretagn/.brew/Cellar/valgrind/HEAD-60ab74a/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==37625==    by 0x1005E0B51: NXHashInsert (in /usr/lib/libobjc.A.dylib)
+==37625==    by 0x1005E087F: NXCreateHashTableFromZone (in /usr/lib/libobjc.A.dylib)
+==37625==    by 0x1005E073E: NXCreateHashTable (in /usr/lib/libobjc.A.dylib)
+==37625==    by 0x1005DF7F5: _read_images (in /usr/lib/libobjc.A.dylib)
+==37625==    by 0x1005DE788: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==37625==    by 0x1005F0F30: map_images (in /usr/lib/libobjc.A.dylib)
+==37625==    by 0x10000747A: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==37625==    by 0x10000762D: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==37625==    by 0x100239A26: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==37625==    by 0x1005DDF73: _objc_init (in /usr/lib/libobjc.A.dylib)
+==37625==    by 0x1001D0E35: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+==37625== 
+==37625== 48 bytes in 2 blocks are possibly lost in loss record 20 of 43
+==37625==    at 0x1000D5130: calloc (in /Users/cbretagn/.brew/Cellar/valgrind/HEAD-60ab74a/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==37625==    by 0x1005DE47B: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==37625==    by 0x1005F0F30: map_images (in /usr/lib/libobjc.A.dylib)
+==37625==    by 0x10000747A: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==37625==    by 0x10000762D: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==37625==    by 0x100239A26: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==37625==    by 0x1005DDF73: _objc_init (in /usr/lib/libobjc.A.dylib)
+==37625==    by 0x1001D0E35: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+==37625==    by 0x1001DCAD1: libdispatch_init (in /usr/lib/system/libdispatch.dylib)
+==37625==    by 0x1000E09C4: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==37625==    by 0x10001A591: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==37625==    by 0x10001A797: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==37625== 
+==37625== 528 bytes in 1 blocks are possibly lost in loss record 37 of 43
+==37625==    at 0x1000D4D4A: malloc_zone_malloc (in /Users/cbretagn/.brew/Cellar/valgrind/HEAD-60ab74a/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==37625==    by 0x1005E06DD: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==37625==    by 0x1005E0591: NXCreateMapTable (in /usr/lib/libobjc.A.dylib)
+==37625==    by 0x1005E2139: unattachedCategoriesForClass(objc_class*, bool) (in /usr/lib/libobjc.A.dylib)
+==37625==    by 0x1005F587C: realizeClassWithoutSwift(objc_class*) (in /usr/lib/libobjc.A.dylib)
+==37625==    by 0x1005F52B8: realizeClassWithoutSwift(objc_class*) (in /usr/lib/libobjc.A.dylib)
+==37625==    by 0x1005F52A0: realizeClassWithoutSwift(objc_class*) (in /usr/lib/libobjc.A.dylib)
+==37625==    by 0x1005F52A0: realizeClassWithoutSwift(objc_class*) (in /usr/lib/libobjc.A.dylib)
+==37625==    by 0x1005F52A0: realizeClassWithoutSwift(objc_class*) (in /usr/lib/libobjc.A.dylib)
+==37625==    by 0x1005DFFAA: _read_images (in /usr/lib/libobjc.A.dylib)
+==37625==    by 0x1005DE788: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==37625==    by 0x1005F0F30: map_images (in /usr/lib/libobjc.A.dylib)
+==37625== 
+==37625== 2,064 bytes in 1 blocks are possibly lost in loss record 39 of 43
+==37625==    at 0x1000D4D4A: malloc_zone_malloc (in /Users/cbretagn/.brew/Cellar/valgrind/HEAD-60ab74a/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==37625==    by 0x1005E06DD: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==37625==    by 0x1005E0591: NXCreateMapTable (in /usr/lib/libobjc.A.dylib)
+==37625==    by 0x1005DF7BC: _read_images (in /usr/lib/libobjc.A.dylib)
+==37625==    by 0x1005DE788: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==37625==    by 0x1005F0F30: map_images (in /usr/lib/libobjc.A.dylib)
+==37625==    by 0x10000747A: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==37625==    by 0x10000762D: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==37625==    by 0x100239A26: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==37625==    by 0x1005DDF73: _objc_init (in /usr/lib/libobjc.A.dylib)
+==37625==    by 0x1001D0E35: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+==37625==    by 0x1001DCAD1: libdispatch_init (in /usr/lib/system/libdispatch.dylib)
+==37625== 
+==37625== 2,064 bytes in 1 blocks are possibly lost in loss record 40 of 43
+==37625==    at 0x1000D4D4A: malloc_zone_malloc (in /Users/cbretagn/.brew/Cellar/valgrind/HEAD-60ab74a/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==37625==    by 0x1005E158B: _NXMapRehash(_NXMapTable*) (in /usr/lib/libobjc.A.dylib)
+==37625==    by 0x1005E1457: NXMapInsert (in /usr/lib/libobjc.A.dylib)
+==37625==    by 0x1005DFD65: _read_images (in /usr/lib/libobjc.A.dylib)
+==37625==    by 0x1005DE788: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==37625==    by 0x1005F0F30: map_images (in /usr/lib/libobjc.A.dylib)
+==37625==    by 0x10000747A: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==37625==    by 0x10000762D: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==37625==    by 0x100239A26: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==37625==    by 0x1005DDF73: _objc_init (in /usr/lib/libobjc.A.dylib)
+==37625==    by 0x1001D0E35: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+==37625==    by 0x1001DCAD1: libdispatch_init (in /usr/lib/system/libdispatch.dylib)
+==37625== 
+==37625== 4,112 bytes in 1 blocks are possibly lost in loss record 43 of 43
+==37625==    at 0x1000D4D4A: malloc_zone_malloc (in /Users/cbretagn/.brew/Cellar/valgrind/HEAD-60ab74a/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==37625==    by 0x1005E158B: _NXMapRehash(_NXMapTable*) (in /usr/lib/libobjc.A.dylib)
+==37625==    by 0x1005E1457: NXMapInsert (in /usr/lib/libobjc.A.dylib)
+==37625==    by 0x1005FBEBF: __sel_registerName(char const*, bool, bool) (in /usr/lib/libobjc.A.dylib)
+==37625==    by 0x1005EC904: fixupMethodList(method_list_t*, bool, bool) (in /usr/lib/libobjc.A.dylib)
+==37625==    by 0x1005E1BFF: prepareMethodLists(objc_class*, method_list_t**, int, bool, bool) (in /usr/lib/libobjc.A.dylib)
+==37625==    by 0x1005F57F6: realizeClassWithoutSwift(objc_class*) (in /usr/lib/libobjc.A.dylib)
+==37625==    by 0x1005F52B8: realizeClassWithoutSwift(objc_class*) (in /usr/lib/libobjc.A.dylib)
+==37625==    by 0x1005F52A0: realizeClassWithoutSwift(objc_class*) (in /usr/lib/libobjc.A.dylib)
+==37625==    by 0x1005F52A0: realizeClassWithoutSwift(objc_class*) (in /usr/lib/libobjc.A.dylib)
+==37625==    by 0x1005F52A0: realizeClassWithoutSwift(objc_class*) (in /usr/lib/libobjc.A.dylib)
+==37625==    by 0x1005DFFAA: _read_images (in /usr/lib/libobjc.A.dylib)
+==37625== 
+==37625== LEAK SUMMARY:
+==37625==    definitely lost: 0 bytes in 0 blocks
+==37625==    indirectly lost: 0 bytes in 0 blocks
+==37625==      possibly lost: 8,840 bytes in 7 blocks
+==37625==    still reachable: 10,390 bytes in 161 blocks
+==37625==         suppressed: 0 bytes in 0 blocks
+==37625== Reachable blocks (those to which a pointer was found) are not shown.
+==37625== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==37625== 
+==37625== For lists of detected and suppressed errors, rerun with: -s
+==37625== ERROR SUMMARY: 6 errors from 6 contexts (suppressed: 398 from 10)

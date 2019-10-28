@@ -1,31 +1,31 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    random.sh                                          :+:      :+:    :+:    #
+#    todo                                               :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/10/21 15:46:51 by cbretagn          #+#    #+#              #
-#    Updated: 2019/10/22 16:24:11 by cbretagn         ###   ########.fr        #
+#    Created: 2019/10/28 12:15:50 by cbretagn          #+#    #+#              #
+#    Updated: 2019/10/28 17:02:34 by cbretagn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#!/bin/bash
+//init fun
 
-total=0;
+get pile from args
+keep copy of first pile
 
-echo 'Hi ! Please select pile size : \c'
-read a;
-echo 'Please select number of times you want to run the process : \c'
-read b;
+update viewport
+while gnl update pile and update viewport
+delay print
+in while loop keep checking for event pause
 
-for k in `seq 1 $b`;
-do
-{
-	ARG=`ruby -e "puts (1..$a).to_a.shuffle.join(' ')"`;
-	tmp=`./push_swap $ARG | wc -l | sed -e 's/ //g' | tr -d '\n'`;
-	let total+=$tmp;
-}
-done
-let total/=$b;
-echo $total
+gradient
+-> min of pla
+-> max of pla
+-> max - min = size
+
+color start - color end / size for r, g and b = speed (float);
+
+compute color of value : (color start + (value - min) * speed) for r, g and b
+FLOAT => INT
