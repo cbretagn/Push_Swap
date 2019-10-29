@@ -6,14 +6,14 @@
 /*   By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 12:51:09 by cbretagn          #+#    #+#             */
-/*   Updated: 2019/10/28 18:00:27 by cbretagn         ###   ########.fr       */
+/*   Updated: 2019/10/29 15:47:21 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../visu.h"
 #include <stdio.h>
 
-static int			exec_instru2(char *str, t_pile *pla, t_pile *plb)
+static int				exec_instru2(char *str, t_pile *pla, t_pile *plb)
 {
 	if (!ft_strcmp(str, "rrr"))
 	{
@@ -35,7 +35,7 @@ static int			exec_instru2(char *str, t_pile *pla, t_pile *plb)
 	return (0);
 }
 
-static int			exec_instru(char *str, t_pile *pla, t_pile *plb)
+static int				exec_instru(char *str, t_pile *pla, t_pile *plb)
 {
 	if (!ft_strcmp(str, "ra"))
 		rotate(pla);
@@ -58,8 +58,8 @@ static int			exec_instru(char *str, t_pile *pla, t_pile *plb)
 	return (0);
 }
 
-void		put_pile(SDL_Renderer *rend, t_pile *pl, t_posinfo *info_pl,
-						t_gradient *gradient)
+void					put_pile(SDL_Renderer *rend, t_pile *pl,
+							t_posinfo *info_pl, t_gradient *gradient)
 {
 	t_link		*tmp;
 	SDL_Color	color;
@@ -69,7 +69,6 @@ void		put_pile(SDL_Renderer *rend, t_pile *pl, t_posinfo *info_pl,
 		return ;
 	tmp = pl->head->prev;
 	y = info_pl->y;
-	set_color(&color, START_R, START_G, START_B);
 	while (tmp != pl->head)
 	{
 		get_gradient_color(&color, gradient, tmp->value);
@@ -77,54 +76,50 @@ void		put_pile(SDL_Renderer *rend, t_pile *pl, t_posinfo *info_pl,
 		tmp = tmp->prev;
 		y -= info_pl->width;
 	}
+	get_gradient_color(&color, gradient, tmp->value);
+	put_rect(rend, info_pl, &color, y);
 }
 
-int			next_instru(t_pile *pla, t_pile *plb)
+int						next_instru(t_pile *pla, t_pile *plb)
 {
 	char	*str;
 	int		ret;
 
 	ret = get_next_line(0, &str);
 	if (ret > 0)
+	{
 		exec_instru(str, pla, plb);
-	ft_strdel(&str);
+		ft_strdel(&str);
+	}
 	return (ret);
 }
 
-int			main_loop(SDL_Renderer *rend, t_pile *pla, t_pile *plb,
-						SDL_Event *e)
+void					main_loop(SDL_Renderer *rend, t_pile *pla,
+								t_pile *plb, t_gradient *gradient)
 {
-	int			loop;
-	t_posinfo	*info_pla;
-	t_posinfo	*info_plb;
-	t_gradient	*gradient;
-	int			end_instru;
+	int				loop;
+	t_posinfo		*info_pla;
+	t_posinfo		*info_plb;
+	int				end_instru;
 
 	loop = 42;
 	info_pla = init_info('a', pla->size);
 	info_plb = init_info('b', pla->size);
-	gradient = init_gradient(pla);
 	end_instru = 1;
 	put_pile(rend, pla, info_pla, gradient);
+	SDL_RenderPresent(rend);
 	while (loop)
 	{
-		while (SDL_PollEvent(e))
-		{
-			if (e->type == SDL_QUIT)
-				loop = 0;
-		}
+		loop = event_loop();
 		if (end_instru > 0)
 			end_instru = next_instru(pla, plb);
 		if (end_instru > 0)
 		{
-			SDL_SetRenderDrawColor(rend, 255, 255, 255, 255);
-			SDL_RenderClear(rend);
+			color_background(rend);
 			put_pile(rend, pla, info_pla, gradient);
 			put_pile(rend, plb, info_plb, gradient);
-			SDL_RenderPresent(rend);
-			SDL_Delay(25);
+			display_rend(rend, info_pla->size);
 		}
 	}
-	return (0);
+	free_posinfo(info_pla, info_plb);
 }
-

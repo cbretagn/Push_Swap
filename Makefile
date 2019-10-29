@@ -6,7 +6,7 @@
 #    By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/03 16:54:48 by cbretagn          #+#    #+#              #
-#    Updated: 2019/10/28 17:13:51 by cbretagn         ###   ########.fr        #
+#    Updated: 2019/10/29 17:35:59 by cbretagn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,7 @@ VISU_NAME	= main.c\
 			  preview.c\
 			  init_fun.c\
 			  sdl_utility.c\
+			  sdl_utility2.c\
 			  gen_utility.c
 
 OBJ_UTIL_NAME	:= $(UTIL_NAME:.c=.o)
@@ -83,13 +84,11 @@ LIB_PATH	= libft/libft.a
 
 CC			= gcc
 
-CFLAGS		= -Wall -Wextra -Werror -g
+CFLAGS		= -Wall -Wextra -Werror
 
 .PHONY		: all clean fclean re display analyze
 
-all			: $(CHECK) $(SORT)
-
-display		: $(VISU)
+all			: $(CHECK) $(SORT) $(VISU)
 
 $(VISU)			: $(OBJ_UTIL) $(OBJ_VISU)
 	make -C ./libft/
@@ -127,13 +126,15 @@ clean		:
 	rm -f $(OBJ_UTIL)
 	rm -f $(OBJ_CHECK)
 	rm -f $(OBJ_SORT)
+	rm -f $(OBJ_VISU)
 	make clean -C ./libft/
 	rmdir $(OBJ_PATH_UTIL) 2> /dev/null || true
 	rmdir $(OBJ_PATH_CHECK) 2> /dev/null || true
 	rmdir $(OBJ_PATH_SORT) 2> /dev/null || true
+	rmdir $(OBJ_PATH_VISU) 2> /dev/null || true
 
 fclean		: clean
-	rm -f $(CHECK) $(SORT)
+	rm -f $(CHECK) $(SORT) $(VISU)
 	make fclean -C ./libft/
 
 re 			: fclean all

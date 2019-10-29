@@ -6,7 +6,7 @@
 /*   By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 16:52:36 by cbretagn          #+#    #+#             */
-/*   Updated: 2019/10/28 16:58:08 by cbretagn         ###   ########.fr       */
+/*   Updated: 2019/10/29 16:37:59 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int			find_max(t_pile *pl)
 	return (ret);
 }
 
-int				v_abs(int nb)
+int			v_abs(int nb)
 {
 	if (nb < 0)
 		return (nb * -1);

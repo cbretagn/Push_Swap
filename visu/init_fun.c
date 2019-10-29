@@ -6,13 +6,13 @@
 /*   By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 12:23:13 by cbretagn          #+#    #+#             */
-/*   Updated: 2019/10/28 14:21:36 by cbretagn         ###   ########.fr       */
+/*   Updated: 2019/10/29 15:46:29 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../visu.h"
 
-int			init_piles(t_pile *pla, int argc, char **argv)
+int				init_piles(t_pile *pla, int argc, char **argv)
 {
 	int		i;
 
@@ -35,7 +35,7 @@ int			init_piles(t_pile *pla, int argc, char **argv)
 	return (0);
 }
 
-SDL_Window		*init_Sdl()
+SDL_Window		*init_sdl(void)
 {
 	SDL_Renderer	*rend;
 	SDL_Window		*win;
@@ -52,10 +52,27 @@ SDL_Window		*init_Sdl()
 	return (win);
 }
 
-void			quit_Sdl(SDL_Window *win, SDL_Renderer *rend)
+void			quit_sdl(SDL_Window *win, SDL_Renderer *rend)
 {
 	SDL_DestroyRenderer(rend);
 	SDL_DestroyWindow(win);
 	SDL_Quit();
 }
 
+int				event_loop(void)
+{
+	SDL_Event	e;
+
+	while (SDL_PollEvent(&e))
+	{
+		if (e.type == SDL_QUIT)
+			return (0);
+	}
+	return (42);
+}
+
+void			color_background(SDL_Renderer *rend)
+{
+	SDL_SetRenderDrawColor(rend, 0x24, 0x24, 0x3e, 255);
+	SDL_RenderClear(rend);
+}

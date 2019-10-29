@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_three.c                                     :+:      :+:    :+:   */
+/*   sdl_utility2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/16 16:51:41 by cbretagn          #+#    #+#             */
-/*   Updated: 2019/10/21 18:34:59 by cbretagn         ###   ########.fr       */
+/*   Created: 2019/10/29 15:08:44 by cbretagn          #+#    #+#             */
+/*   Updated: 2019/10/29 15:44:20 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../visu.h"
 
-// 1 2 3 NA
-// 1 3 2 ra sa rra
-// 2 1 3 sa
-// 2 3 1 ra sa rra sa
-// 3 2 1 pb pb pb pa pa pa
-// 3 1 2 pb ra ra pa rra rra
+void			display_rend(SDL_Renderer *rend, int size)
+{
+	(void)size;
+	SDL_RenderPresent(rend);
+	SDL_Delay(20);
+}
 
+void			free_posinfo(t_posinfo *pla, t_posinfo *plb)
+{
+	free(pla);
+	pla = NULL;
+	free(plb);
+	plb = NULL;
+}
