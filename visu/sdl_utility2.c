@@ -6,7 +6,7 @@
 /*   By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 15:08:44 by cbretagn          #+#    #+#             */
-/*   Updated: 2019/10/29 15:44:20 by cbretagn         ###   ########.fr       */
+/*   Updated: 2019/10/30 15:23:33 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,13 @@
 
 void			display_rend(SDL_Renderer *rend, int size)
 {
-	(void)size;
 	SDL_RenderPresent(rend);
-	SDL_Delay(20);
+	if (size >= 200)
+		SDL_Delay(10);
+	else if (size >= 100)
+		SDL_Delay(100);
+	else
+		SDL_Delay(500);
 }
 
 void			free_posinfo(t_posinfo *pla, t_posinfo *plb)

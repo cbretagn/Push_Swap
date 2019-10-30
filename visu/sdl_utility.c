@@ -6,7 +6,7 @@
 /*   By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 14:02:13 by cbretagn          #+#    #+#             */
-/*   Updated: 2019/10/29 15:46:44 by cbretagn         ###   ########.fr       */
+/*   Updated: 2019/10/30 15:20:46 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_posinfo		*init_info(char type, int size)
 		return (NULL);
 	info_pl->size = size;
 	info_pl->length = L_REC;
-	info_pl->width = WIDTH * 5 / 6 / size;
+	info_pl->width = (WIDTH - 200) / size;
 	if (type == 'a')
 		info_pl->x = X_PA;
 	else

@@ -6,7 +6,7 @@
 /*   By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 11:57:30 by cbretagn          #+#    #+#             */
-/*   Updated: 2019/10/29 17:53:35 by cbretagn         ###   ########.fr       */
+/*   Updated: 2019/10/30 15:00:51 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,6 @@ void			rrb_rra(t_pile *pl, t_pile *instru, int i);
 void			pb_pa(t_pile *pls, t_pile *pld, t_pile *instru, int i);
 
 t_pile			*parse_string(char *str, t_pile *pl);
+
+void			handle_three(t_pile *pl, t_pile *instru);
 #endif

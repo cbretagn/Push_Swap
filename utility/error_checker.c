@@ -6,7 +6,7 @@
 /*   By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 12:04:16 by cbretagn          #+#    #+#             */
-/*   Updated: 2019/10/21 14:10:34 by cbretagn         ###   ########.fr       */
+/*   Updated: 2019/10/30 15:17:57 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int					error_checker(int size, char **tab)
 	int		j;
 
 	i = 0;
+	if (size == 1)
+		exit(0);
 	if (size < 2)
 		return (-1);
 	if (size == 2)
@@ -25,8 +27,7 @@ int					error_checker(int size, char **tab)
 	while (++i < size)
 	{
 		j = -1;
-		if (ft_strlen(tab[i]) > 11
-				|| (ft_strlen(tab[i]) > 10
+		if (ft_strlen(tab[i]) > 11 || (ft_strlen(tab[i]) > 10
 					&& tab[i][0] != '-' && tab[i][0] != '+'))
 			return (-1);
 		if (tab[i][0] == '-' || tab[i][0] == '+')

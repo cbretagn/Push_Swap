@@ -6,7 +6,7 @@
 #    By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/03 16:54:48 by cbretagn          #+#    #+#              #
-#    Updated: 2019/10/29 17:35:59 by cbretagn         ###   ########.fr        #
+#    Updated: 2019/10/30 15:01:43 by cbretagn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ SORT_NAME	= sort_algo.c\
 			  sort_algo2.c\
 			  cheese.c\
 			  instruction_handling.c\
+			  handle_three.c\
 			  main.c
 
 CHECK_NAME	= checker.c

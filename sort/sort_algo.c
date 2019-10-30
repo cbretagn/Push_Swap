@@ -6,7 +6,7 @@
 /*   By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 16:33:39 by cbretagn          #+#    #+#             */
-/*   Updated: 2019/10/29 17:35:15 by cbretagn         ###   ########.fr       */
+/*   Updated: 2019/10/30 15:10:01 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 static void			handle_two(t_stru *pl, int size, char i)
 {
-	if (size == 2)
+	if (size == 3)
+		handle_three(pl->pla, pl->instru);
+	else if (size == 2)
 	{
 		if (i == 0)
 		{
@@ -39,7 +41,7 @@ static void			sort_pla(int size, t_stru *pl)
 	int		tmp;
 	int		count_ra;
 
-	if (size <= 2)
+	if (size <= 3)
 		handle_two(pl, size, 1);
 	else
 	{
