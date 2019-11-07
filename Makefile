@@ -6,7 +6,7 @@
 #    By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/03 16:54:48 by cbretagn          #+#    #+#              #
-#    Updated: 2019/10/30 15:01:43 by cbretagn         ###   ########.fr        #
+#    Updated: 2019/11/07 12:48:05 by cbretagn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ UTIL_NAME	= create_pile.c\
 			  swap.c\
 			  rotation.c\
 			  error_checker.c\
-			  arg_str.c\
+			  check_sorted.c\
 			  get_next_line.c
 			  
 SORT_NAME	= sort_algo.c\

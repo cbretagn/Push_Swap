@@ -1,42 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   arg_str.c                                          :+:      :+:    :+:   */
+/*   check_sorted.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/21 13:18:41 by cbretagn          #+#    #+#             */
-/*   Updated: 2019/10/21 15:11:05 by cbretagn         ###   ########.fr       */
+/*   Created: 2019/11/07 12:45:08 by cbretagn          #+#    #+#             */
+/*   Updated: 2019/11/07 12:45:49 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-t_pile		*parse_string(char *str, t_pile *pl)
+int					check_sorted(t_pile *pl)
 {
 	int		i;
+	t_link	*tmp;
 
 	i = 0;
-	while (str[i] == ' ')
-		i++;
-	while (str[i])
+	tmp = pl->head;
+	while (++i < pl->size)
 	{
-		if (str[i] <= '9' && str[i] >= '0')
-			pl = add_link(pl, ft_atoi(str + i));
-		else
-		{
-			delete_pile(pl);
-			return (NULL);
-		}
-		while (str[i] <= '9' && str[i] >= '0')
-			i++;
-		if (str[i] != '\0' && str[i] != ' ' && str[i] != '\n')
-		{
-			delete_pile(pl);
-			return (NULL);
-		}
-		while (str[i] == ' ' || str[i] == '\n')
-			i++;
+		if (tmp->value > tmp->next->value)
+			return (-1);
+		tmp = tmp->next;
 	}
-	return (pl);
+	return (0);
 }

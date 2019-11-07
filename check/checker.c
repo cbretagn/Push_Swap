@@ -6,7 +6,7 @@
 /*   By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 12:04:16 by cbretagn          #+#    #+#             */
-/*   Updated: 2019/10/30 15:18:11 by cbretagn         ###   ########.fr       */
+/*   Updated: 2019/11/07 12:46:07 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,12 +100,6 @@ int					main(int argc, char **argv)
 	i = 0;
 	if (error_checker(argc, argv) < 0)
 		return (input_error(pla, plb));
-	else if (error_checker(argc, argv) == 1)
-	{
-		pla = parse_string(argv[1], pla);
-		if (pla == NULL)
-			return (input_error(pla, plb));
-	}
 	else
 	{
 		while (++i < argc)
