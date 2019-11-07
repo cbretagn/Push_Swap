@@ -6,7 +6,7 @@
 /*   By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 12:23:13 by cbretagn          #+#    #+#             */
-/*   Updated: 2019/10/29 15:46:29 by cbretagn         ###   ########.fr       */
+/*   Updated: 2019/11/07 13:07:44 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,6 @@ int				init_piles(t_pile *pla, int argc, char **argv)
 	i = 0;
 	if (error_checker(argc, argv) < 0)
 		return (-1);
-	else if (error_checker(argc, argv) == 1)
-	{
-		pla = parse_string(argv[1], pla);
-		if (pla == NULL)
-			return (-1);
-	}
 	else
 	{
 		while (++i < argc)
