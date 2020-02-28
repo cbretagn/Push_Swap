@@ -6,7 +6,7 @@
 /*   By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 12:04:16 by cbretagn          #+#    #+#             */
-/*   Updated: 2019/11/07 12:46:07 by cbretagn         ###   ########.fr       */
+/*   Updated: 2020/02/27 17:54:59 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int			input_error(t_pile *pla, t_pile *plb)
 	if (plb)
 		delete_pile(plb);
 	write(1, "Error\n", 6);
-	return (0);
+	exit(0);
 }
 
 static int			exec_instru2(char *str, t_pile *pla, t_pile *plb)
@@ -70,8 +70,9 @@ static int			exec_instru(char *str, t_pile *pla, t_pile *plb)
 static int			handle_piles(t_pile *pla, t_pile *plb)
 {
 	char	*str;
+	int		ret;
 
-	while (get_next_line(0, &str))
+	while ((ret = get_next_line(0, &str) > 0))
 	{
 		if (exec_instru(str, pla, plb) < 0)
 		{
@@ -80,6 +81,8 @@ static int			handle_piles(t_pile *pla, t_pile *plb)
 		}
 		ft_strdel(&str);
 	}
+	if (ret == -1)
+		return (input_error(pla, plb));
 	if (plb->head == NULL && check_sorted(pla) == 0)
 		write(1, "OK\n", 3);
 	else

@@ -6,7 +6,7 @@
 /*   By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 16:25:48 by cbretagn          #+#    #+#             */
-/*   Updated: 2019/10/29 15:44:04 by cbretagn         ###   ########.fr       */
+/*   Updated: 2019/11/07 13:37:43 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int				main(int argc, char **argv)
 		exit(-1);
 	pla = create_pile();
 	plb = create_pile();
-	if (init_piles(pla, argc, argv) < 0 || pla->size < 50)
+	if (init_piles(pla, argc, argv) < 0 || pla->size < 50 || pla->size > 800)
 		malloc_error(pla, plb);
 	SDL_SetWindowOpacity(win, 0.9);
 	gradient = init_gradient(pla);
